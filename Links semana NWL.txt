@@ -1,0 +1,331 @@
+Links semana NWL
+
+---Wireframes, MindMaps..
+	https://whimsical.com
+
+---ZUP
+	https://www.zup.com.br/carreiras
+	https://insights.zup.com.br/charles-lancamento?utm_source=rocket&utm_medium=referral&utm_name=live&utm_term=&utm_content=
+
+---Impulso
+	https://impulso.network/
+
+---Vulpi
+	https://app.vulpi.com.br/dev
+
+--- MEGAHack
+	https://www.megahack.com.br/
+
+
+==========================================================================================
+Aula 2 Notes:
+
+Iniciar o server no terminal:
+npx ts-node-dev src/server.ts
+ctrl+c+S , parar o server
+
+---Insominia.rest versão para x64
+Para testar rotas POST,GET,PUT..
+	https://insomnia.rest
+
+---Getpostman versão para x32
+	https://www.postman.com
+
+---Knexjs
+para o banco continuar a escrever em javascript
+ao inves de select * from users = yago
+	http://knexjs.org
+
+--Notion
+Anotar
+	https://www.notion.so
+
+>>>>>>>>>>>>>>>>>>>>>>>>>> Aula 2 34:26 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Como a aplicação estava antes de configurar o banco
+import express from 'express';
+
+const app = express();
+
+app.use(express.json());
+//.use serve para colocar uma funcionalidade a mais no express
+
+// Rota: Endereço completo da requisição
+// Recurso: qual entidade estamos acessando do sistema
+
+//GET: Buscar uma ou mais informações do back-end
+//POST: Criar uma nova informação no back-end
+//PUT: Atualizar uma informação existente no back-end
+//DELETE: Remover uma informação do back-end
+
+//POST: http://localhost:3333/users: Cria um usuario
+//GET: http://localhost:3333/users: Listar usuarios
+
+// Request Param: Parametros que vem na própria rota que indentificam um recurso
+// Query Param: Parametros que vem na propria rota geralmente opcionais para filtros, paginação
+// Request Body: Parametros para criação/atualização de informações
+
+const users =[
+    'Yago', // 0
+    'Tamires', // 1
+    'Pamela', // 2
+    'Daniel', // 3
+];
+
+app.get('/users', (request, response) =>{
+    const search = String(request.query.search);
+
+    const filteredUsers = search ? users.filter(user => user.includes(search)) : users;
+
+    return response.json(filteredUsers);
+});
+
+app.get('/users/:id',(request,response) =>{
+    const id = Number(request.params.id);
+
+    const user= users [id];
+    return response.json(user);
+});
+
+app.post('/users',(request, response) =>{
+    const data = request.body;
+    console.log(data);
+    
+    const user ={
+        name: data.name,
+        email: data.email,
+    };
+
+    return response.json(user);
+});
+
+app.listen(3333);
+
+---If Ternário
+	https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Operador_Condicional
+
+Comando:npx ts-node-dev src/server.ts
+	Para iniciar o server
+	npx knex migrate:latest --knexfile knexfile.ts migrate:latest
+	Para rodar as migrações, e criar o databasesqlite
+Comando: npm run knex:migrate ||
+	é o comando depois de ir no package.json e na parte de scripts
+	colocar "knex:migrate": "knex --knexfile knexfile.ts migrate:latest"
+
+Comando: npm run knex:seed
+	coloca  "knex:seed": "knex --knexfile knexfile.ts seed:run"
+	para mandar as tabelas do banco ja com alguma informação
+	
+Comando: Ctrl+Shift+P > SQLite Open Database > seleciona o primeiro
+	Para abrir o banco de dados
+
+
+
+==================================================================
+				Aula3
+
+Perguntas importantes:
+
+*Que tipo de profissional o mercado ta buscando?
+
+*Quais empresas estão utilizando essa tecnologia?
+
+*Como é o ecossistema e as ferramentas que abrange a tecnologia?
+
+*Qual o tamanho da comunidade?
+
+*Essa tecnologia faz sentido para voce no seu momento atual?
+
+*Se eu posso e quanto poderia aproveitar dessa tecnologia
+em outras ferramentas?
+
+*Quais os problemas que essa tecnologia resolve?
+
+*Onde eu quero chegar com essa tecnologia?
+
+**Pelo cmd navega até a pasta do server, cd caminho e pra rodar o server
+cd.. cd .. cd Users cd PICHAU cd Documents cd www cd nlw cd server cd src e o npm run dev
+Comando:no terminal do vscode no terminal npm start
+
+Fonts Google- repositório de fonts da google
+
+Importar  react icons
+Comando: npm install react-icons
+
+Roteamento
+Comando: npm install react-router-dom
+
+Para poder fazer import {} from 'react-router-dom' precisar do comando.
+Comando: npm install @types/react-router-dom -D
+
+---LeafLet
+   Mapa
+	https://leafletjs.com
+Instalar as bibliotecas
+Comando:npm install leaflet react-leaflet
+
+Biblioteca de tipos
+Comando:npm install @types/react-leaflet -D
+
+
+Biblioteca para poder fazer requisições do back-end
+Comando:npm install axios
+
+Google Procurar > typescript react cheat sheet
+	Interações do typescript com react
+	https://github.com/typescript-cheatsheets/react-typescript-cheatsheet
+
+
+*Se a geolocalização não estiver funcionando, volte para 1:53 e olhe para trás
+ Serviço de localidade para Map do IBGE
+
+https://servicodados.ibge.gov.br/api/docs/localidades?versao=1#api-Municipios-estadosUFMunicipiosGet
+
+==================================================================
+				Aula4
+Tudo no cmd>
+Instalação do EXPO
+Comando:npm install -g expo-cli
+
+Para iniciar
+Comando: expo init mobile
+
+**Iniciar a aplicação - Tempo 21:37 se o navegador fechar
+	aperta cd até chegar
+	Comando:cd mobile e npm start no cmd
+	? se quiser ver comandos, 
+	?+e = enviar um email com link, loga na acc EXPO pelo cmd
+	olha o email e clica no link
+---Expo Acc
+	YagoYal
+	iwrestled
+	MekPekTek120
+
+PARA RODAR O EXPO POE ELE NA C:\Windows\System32 e inicia tudo
+
+Outros comandos:
+>npm start #
+npm start android
+npm start ios #
+npm run web
+>
+
+
+Emulador
+	https://www.youtube.com/watch?v=eSjFDWYkdxM
+Emulador online
+	snack.expo.io
+
+Nota:cd mobile e npm start no cmd Depois de dar esse comando
+vai abrir uma pagina no navegador com localhost:19002
+na aplicação em Connection do lado esquerdo a baixo tem LAN
+pra mesma rede wifi.
+*Se quiser criar um endereço com 3g/4g que qualquer um possa usar
+clica em Tunnel
+
+Problemas com Expo
+	https://github.com/Rocketseat/expo-common-issues
+
+----------------------- -------------------------
+Usando Emulador
+No AS:	Android Studio > Configure > AVDManager > escolhe um dispositivo
+	de preferencia que tenha suporte a loja > dá play >
+	e inicia o app do Expo. Ctrl+M abrir o menu no app
+
+Iniciar o projeto
+No cmd: C:\Users\PICHAU\Documents\www\nlw\mobile>expo init Expo
+Iniciar o Expo
+No cmd: C:\Users\PICHAU\Documents\www\nlw\mobile>npm start
+	Na tela que vai abrir, do lado esquerdo clica em
+	Run on Android device/emulator ou no iOS simulator
+
+Instalar google fonts pelo Expo
+	expo install expo-font @expo-google-fonts/ubuntu @expo-google-fonts/roboto
+	Se der um erro de Policy leia isso
+	https://winaero.com/blog/change-powershell-execution-policy-windows-10/
+	https://docs.microsoft.com/pt-br/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7
+
+React Navigation
+	https://reactnavigation.org/docs/getting-started
+	Para instalar:
+	npm install @react-navigation/native
+	Para algumas coisas no projeto
+	expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+	Uma Lib:
+	npm install @react-navigation/stack
+
+!Importante
+	Se alguma hora no cmd com o npm start da aplicação
+	estiver escrito que desconectou: 
+	-ctrl+c para fechar a conexao
+	-npm start para iniciar de novo
+	-no emulador, fecha o app do expo e abre de novo
+	- e escolhe a ultima conexao
+
+Maps no React Native
+	expo install react-native-maps
+
+	Por causa de Constants aberta numa const na page Points
+	importar a lib
+	expo install expo-constants
+
+	Para usar as imagens svg
+	expo install react-native-svg
+
+	Instalar axios
+	npm install axios
+
+	Geolozalicação
+	expo install expo-location
+
+
+--------------------Resumo de como abrir a aplicação-----------------------
+
+Segue os passos para executar a aplicação no Emulador e celular
+(Nota: escrevi isso porque sei que um dia voce vai esqucer)
+	-Abre o PowerShell ou cmd como adm
+	-A pasta se encontra nesse caminho C:\Users\PICHAU\Documents\www
+	
+	-Para abrir o server pelo cmd, vai apertando cd caminho 
+	até chegar nesse caminho C:\Users\PICHAU\Documents\www\nlw\server\src
+	depois no cmd da npm run dev
+	-Para abrir o app mobile, vai apertando cd caminho
+	até chegar nesse caminho C:\Users\PICHAU\Documents\www\nlw\mobile
+	depois no cmd da npm star, um navegador com uma pag que escuta
+	o que tá rolando na aplicação e vem quem ta conectado.
+	
+	-Pelo celular, baixa o expo, tem que estar na mesma rede,
+	voce irá conectar no ip que irá aparecer após ir no cmd do mobile
+	?+e, entra na acc expo, vai no email, e clica no link.
+	-Pelo Emulador, abre o android studio,configure, AVD Manager
+	e da play no dispositivo que voce configurou
+	
+
+====================================================================================
+
+
+					Aula5
+	Lib para uploads de img
+	npm install multer
+	Os tipos do multer
+	npm install @types/multer -D
+
+>	Rodar o server, no PowerShell ou no terminal na pasta do server
+	npm run dev
+	
+	Rodar a web, Powershell npm run dev
+	no vscode e na pasta da web, npm start
+	
+	Rodar a aplicação, Powershell cd até o server e mobile	
+	no server = npm run dev
+	mobile = npm start
+	Emulador, AndroidStudio>Configure>AVDManager e escolhe o dispositivo
+	Smartphone, abre o app do Expo e clica na rota, se nao tiver
+	(Nota: no cmd do Expo, entra na acc, envia um email com o Link)
+>
+
+	Lib onde cria uma area onde da pra jogar imagens
+	npm install react-dropzone
+
+	Validação do Front-end
+	https://github.com/jquense/yup
